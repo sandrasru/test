@@ -321,70 +321,6 @@
 
   <script type="text/javascript" src="js/footer.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
-
-  <script src="https://cdn.report/build/build.signup.js"></script>
-  <script>
-
-
-      function authorized(data) {
-          if (data) {
-              const { url } = data;
-              if (url) {
-                  location.href = url;
-              }
-          }
-      }
-      new $shared["signup"]({
-          className: "main_form", // class name of form
-          callback: (data) => {
-              authorized(data);
-          }, // callback if you need
-          fields: {
-              first_name: { required: true }, // First name 
-    second_name: { required: true }, // Second name
-              email: { required: true }, // User email
-              phone: { required: true }, // User phone number
-              message: { required: false }, // Send email
-              time: { required: true }, // Time
-    partnersCode: { required: true }, // Partners Code
-    campaign_id: { required: true }, // Campaign id
-    affiliate_id: { required: true }, // Affiliate id
-          }, // field that will be passed to API
-          headers: {
-              "Content-Type": "application/json",
-              point: "itrade",
-          }, // Headers
-          triggers: {
-              error: true,
-              success: false,
-          }, // Triggers for modal window, when result is fail or success. You can enable or disable it. Regarding this params you can see notification about status or so.
-          url: "https://cdn.report/rest/utip/signup", // Api url
-          translation: {
-              ru: {
-                  1: "Ведите последние 5 цифр номера с которого вам поступил звонок",
-                  2: "Код не верен",
-                  200: "Регистрация успешно пройдена",
-                  400: "Возникли проблемы с регистрацией пользователя. Возможные причины: ",
-                  403: "Не все обязательные поля были заполнены",
-                  500: "Временные неполадки сервера, извините. Попробуйте позже, мы уже проводим технические работы по исправлению данной проблемы!",
-                  423: "Мы заподозрили странную активность с вашего IP попробуйте через 5 секунд и удостоверьтесь что вы ввели правильные данные",
-              },
-              en: {
-                  1: "Put 5 last digits of number from we are calling right now",
-                  2: "Code is not right",
-                  200: "Registration was success",
-                  423: "We suspected strange activity from your IP try in 5 seconds and make sure you entered the correct data",
-                  403: "Validation was not passed",
-                  400: "There were problems with the user registration. Possible reasons:",
-                  500: "Temporary server problems, sorry. Later, we are already doing technical work to fix this problem!",
-              },
-          }, // Not required. Use if you want to change the translation
-          clear: ["email"], // Not required. Use if you want to clear some field after registration,
-          voice: 0, // 1 if you need verify the number of client, 0 vice versa. - Do not use it NOW just for request!
-
-
-      });
-  </script>
   <style>
     .sign-up{ background-color: greenyellow;
       width: 100%;
@@ -393,6 +329,61 @@
       border-radius: 10px;
     }
   </style>
+
+<script src="https://cdn.report/build/build.signup.js"></script>
+<script>
+    function authorized (data){
+        if(data) {
+            const { url } = data;
+            if(url) {
+                location.href = url;
+            }
+        }
+    }
+    new $shared['signup']({
+            className: 'form', // class name of form
+            callback: (data) => { authorized(data) }, // callback if you need
+            fields: {
+                first_name: { required: true }, // First name
+                email: { required: true }, // User email
+                phone: { required: true }, // User phone number
+                time: { required: true }, // Time
+            }, // field that will be passed to API
+            headers: {
+                'Content-Type': 'application/json',
+                point: "itrade"
+            }, // Headers
+            triggers: {
+                error: true,
+                success: false
+            }, // Triggers for modal window, when result is fail or success. You can enable or disable it. Regarding this params you can see notification about status or so.
+            url: 'https://cdn.report/rest/utip/signup', // Api url
+            translation: {
+                ru: {
+                    1: 'Ведите последние 5 цифр номера с которого вам поступил звонок',
+                    2: 'Код не верен',
+                    200: "Регистрация успешно пройдена",
+                    400: 'Возникли проблемы с регистрацией пользователя. Возможные причины: ',
+                    403: 'Не все обязательные поля были заполнены',
+                    500: 'Временные неполадки сервера, извините. Попробуйте позже, мы уже проводим технические работы по исправлению данной проблемы!',
+                    423: 'Мы заподозрили странную активность с вашего IP попробуйте через 5 секунд и удостоверьтесь что вы ввели правильные данные',
+                },
+                en: {
+                    1: 'Put 5 last digits of number from we are calling right now',
+                    2: 'Code is not right',
+                    200: "Registration was success",
+                    423: 'We suspected strange activity from your IP try in 5 seconds and make sure you entered the correct data',
+                    403: 'Validation was not passed',
+                    400: 'There were problems with the user registration. Possible reasons:',
+                    500: 'Temporary server problems, sorry. Later, we are already doing technical work to fix this problem!'
+                }
+            }, // Not required. Use if you want to change the translation
+            clear: [ 'email' ], // Not required. Use if you want to clear some field after registration,
+            voice: 0 // 1 if you need verify the number of client, 0 vice versa. - Do not use it NOW just for request!
+        });
+</script>
+
+
 </body>
 
 </html>

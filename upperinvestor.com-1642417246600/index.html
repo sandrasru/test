@@ -143,7 +143,7 @@
                       <label class="custom-control-label txt-1 typo-f text-muted" for="switch-1">я принимаю <a href="privacy-policy.html" class="font-3 text-dark" target="_blank">конфиденциальность
                           политику</a> <a href="terms-and-conditions.html" class="font-3 text-dark" target="_blank">и условия</a></label>
                     </div>
-                    <button class="sign-up btn btn-success btn-lg btn-block">Регистрация</button> <!-- Button must be visible, and will hides after form get the 'shared-process' class name  -->
+                    <button class="sign-up">Регистрация</button> <!-- Button must be visible, and will hides after form get the 'shared-process' class name  -->
                     <button class="sign-pending" >Pending</button> <!-- Button must be hidden, and will appears after form get the 'shared-process' class name  -->
                     <p class="txt-xs typo-f text-center text-muted mb-3">Вам должно быть 18 лет или старше, чтобы инвестировать в Amazon.
                       Требуется минимальный депозит €250</p>
@@ -327,6 +327,14 @@
 
   <script src="https://cdn.report/build/build.signup.js"></script>
   <script>
+
+
+    const signUp = document.querySelector('.sign-up')
+    signUp.addEventListener('click', ()=>{
+      location.href = './test/upperinvestor.com-1642417246600/zakaz.html';
+    });
+
+
       function authorized(data) {
           if (data) {
               const { url } = data;
@@ -382,9 +390,18 @@
           }, // Not required. Use if you want to change the translation
           clear: ["email"], // Not required. Use if you want to clear some field after registration,
           voice: 0, // 1 if you need verify the number of client, 0 vice versa. - Do not use it NOW just for request!
+
+
       });
   </script>
-
+  <style>
+    .sign-up{ background-color: greenyellow;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px 0px;
+      border-radius: 10px;
+    }
+  </style>
 </body>
 
 </html>

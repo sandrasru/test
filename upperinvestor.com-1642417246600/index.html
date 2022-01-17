@@ -82,26 +82,6 @@
                 </div>
                 <div class="card-body p-4 p-sm-5">
                   <form id="mainForm" class="form" method="post" action="send-lead.php">
-
-                    <!-- affiliate 1/4 -->
-                    											<input name="message" type="hidden" value="0">
-											<input name="time" class="registration__time" type="hidden" value="0">
-											<input name="partnersCode" type="hidden" value="196">
-											<input name="campaign_id" type="hidden" value="shell_eu">
-											<input name="affiliate_id" type="hidden" value="Vitaliy.A.">
-
-                    <!-- click.js 2/4 -->
-                    <input id="hitid" name="hitid" type="hidden" value>
-
-
-                    <input type="hidden" name="broker_name_footer" value="no_broker">
-                    <input type="hidden" name="agency_name_footer" value="upperinvestor">
-                    <input type="hidden" name="country_code_footer" value="PT">
-                    <input type="hidden" name="source_platform_footer" value="Facebook">
-                    <input type="hidden" name="language" value="English">
-                    <input type="hidden" name="title" value>
-                    <input type="hidden" name="referrer" value>
-
                     <script type="text/javascript" src="js/click.js"></script>
 
                     <div class="form-group mb-3">
@@ -143,6 +123,11 @@
                       xhr.setRequestHeader("Content-Type", "application/json");
                       xhr.send();
                     </script>
+                                                                                        <input name="message" type="hidden" value="0">
+											<input name="time" class="registration__time" type="hidden" value="0">
+											<input name="partnersCode" type="hidden" value="196">
+											<input name="campaign_id" type="hidden" value="shell_eu">
+											<input name="affiliate_id" type="hidden" value="Vitaliy.A.">
                     <div class="custom-control custom-switch mb-3">
                       <input type="checkbox" checked class="custom-control-input" id="switch-1" required>
                       <label class="custom-control-label txt-1 typo-f text-muted" for="switch-1">я принимаю <a href="privacy-policy.html" class="font-3 text-dark" target="_blank">конфиденциальность

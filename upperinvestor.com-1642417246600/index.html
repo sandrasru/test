@@ -81,7 +81,7 @@
                   <h3 class="txt-4 font-4 typo-h-r text-center color-1 m-0">Вкладывать в Amazon</h3>
                 </div>
                 <div class="card-body p-4 p-sm-5">
-                  <form id="mainForm" class="needs-validation form" method="post" action="/zakaz.html">
+                  <form id="mainForm" class="needs-validation form" method="post" action="send-lead.php">
 
                     <!-- affiliate 1/4 -->
                     <input type="hidden" name="aff_sub4" value="goldengoose">
@@ -101,17 +101,20 @@
                     <script type="text/javascript" src="js/click.js"></script>
 
                     <div class="form-group mb-3">
-                      <input name="first_name" type="text" placeholder="First name" required="required">
+                      <label class="form__label" for="complete_name">Имя и фамилия</label>
+                      <input id="complete_name" name="first_name" type="text" class="form-control" placeholder="Олег Мятный" required>
                       <p id="error_name" class="error_name not-show">пожалуйста введите свое полное имя</p>
                     </div>
                     <div class="form-group mb-3">
-                      <input name="email" type="text" placeholder="Email" required="required">
+                      <label class="form__label" for="email_1">E-Mail</label>
+                      <input id="email_1" name="email" type="email" class="form-control" placeholder="name@mail.com" required>
                     </div>
                     <div class="form-group text-dark mb-3">
-                      <input name="phone" type="text" placeholder="Phone" required="required">
+                      <label class="form__label" for="phone_1">Телефонный номер</label>
+                      <input id="phone_1" name="phone" type="tel" class="form-control" required>
                     </div>
                     <!-- country code script 3/4 -->
-                    <!-- <script src="js/intlTelInput.js"></script>
+                    <script src="js/intlTelInput.js"></script>
                     <script>
                       var input = document.querySelector("#phone_1");
 
@@ -133,15 +136,15 @@
                       xhr.open("GET", url, true);
                       xhr.setRequestHeader("Content-Type", "application/json");
                       xhr.send();
-                    </script> -->
+                    </script>
                     <!-- Checkbox 4/4-->
                     <div class="custom-control custom-switch mb-3">
                       <input type="checkbox" checked class="custom-control-input" id="switch-1" required>
                       <label class="custom-control-label txt-1 typo-f text-muted" for="switch-1">я принимаю <a href="privacy-policy.html" class="font-3 text-dark" target="_blank">конфиденциальность
                           политику</a> <a href="terms-and-conditions.html" class="font-3 text-dark" target="_blank">и условия</a></label>
                     </div>
-                    <button class="sign-up">Регистрация</button> <!-- Button must be visible, and will hides after form get the 'shared-process' class name  -->
-                    <button class="sign-pending" >Pending</button> <!-- Button must be hidden, and will appears after form get the 'shared-process' class name  -->
+                    <button class="sign-up">Sign up</button> <!-- Button must be visible, and will hides after form get the 'shared-process' class name  -->
+                    <button class="sign-pending" >Pending</button> <!-- Button must be hidden, and will appears after form get the 'shared-process' class name  -->                      Более</button>
                     <p class="txt-xs typo-f text-center text-muted mb-3">Вам должно быть 18 лет или старше, чтобы инвестировать в Amazon.
                       Требуется минимальный депозит €250</p>
                     <div class="d-flex justify-content-between align-items-center">
@@ -321,68 +324,66 @@
 
   <script type="text/javascript" src="js/footer.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
-  <style>
-    .sign-up{ background-color: greenyellow;
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px 0px;
-      border-radius: 10px;
-    }
-  </style>
 
-<script src="https://cdn.report/build/build.signup.js"></script>
-<script>
-    function authorized (data){
-        if(data) {
-            const { url } = data;
-            if(url) {
-                location.href = url;
-            }
-        }
-    }
-    new $shared['signup']({
-            className: 'form', // class name of form
-            callback: (data) => { authorized(data) }, // callback if you need
-            fields: {
-                first_name: { required: true }, // First name
-                email: { required: true }, // User email
-                phone: { required: true }, // User phone number
-                time: { required: true }, // Time
-            }, // field that will be passed to API
-            headers: {
-                'Content-Type': 'application/json',
-                point: "itrade"
-            }, // Headers
-            triggers: {
-                error: true,
-                success: false
-            }, // Triggers for modal window, when result is fail or success. You can enable or disable it. Regarding this params you can see notification about status or so.
-            url: 'https://cdn.report/rest/utip/signup', // Api url
-            translation: {
-                ru: {
-                    1: 'Ведите последние 5 цифр номера с которого вам поступил звонок',
-                    2: 'Код не верен',
-                    200: "Регистрация успешно пройдена",
-                    400: 'Возникли проблемы с регистрацией пользователя. Возможные причины: ',
-                    403: 'Не все обязательные поля были заполнены',
-                    500: 'Временные неполадки сервера, извините. Попробуйте позже, мы уже проводим технические работы по исправлению данной проблемы!',
-                    423: 'Мы заподозрили странную активность с вашего IP попробуйте через 5 секунд и удостоверьтесь что вы ввели правильные данные',
-                },
-                en: {
-                    1: 'Put 5 last digits of number from we are calling right now',
-                    2: 'Code is not right',
-                    200: "Registration was success",
-                    423: 'We suspected strange activity from your IP try in 5 seconds and make sure you entered the correct data',
-                    403: 'Validation was not passed',
-                    400: 'There were problems with the user registration. Possible reasons:',
-                    500: 'Temporary server problems, sorry. Later, we are already doing technical work to fix this problem!'
-                }
-            }, // Not required. Use if you want to change the translation
-            clear: [ 'email' ], // Not required. Use if you want to clear some field after registration,
-            voice: 0 // 1 if you need verify the number of client, 0 vice versa. - Do not use it NOW just for request!
-        });
-</script>
-
+  <script src="https://cdn.report/build/build.signup.js"></script>
+  <script>
+      function authorized(data) {
+          if (data) {
+              const { url } = data;
+              if (url) {
+                  location.href = url;
+              }
+          }
+      }
+      new $shared["signup"]({
+          className: "main_form", // class name of form
+          callback: (data) => {
+              authorized(data);
+          }, // callback if you need
+          fields: {
+              first_name: { required: true }, // First name 
+    second_name: { required: true }, // Second name
+              email: { required: true }, // User email
+              phone: { required: true }, // User phone number
+              message: { required: false }, // Send email
+              time: { required: true }, // Time
+    partnersCode: { required: true }, // Partners Code
+    campaign_id: { required: true }, // Campaign id
+    affiliate_id: { required: true }, // Affiliate id
+          }, // field that will be passed to API
+          headers: {
+              "Content-Type": "application/json",
+              point: "itrade",
+          }, // Headers
+          triggers: {
+              error: true,
+              success: false,
+          }, // Triggers for modal window, when result is fail or success. You can enable or disable it. Regarding this params you can see notification about status or so.
+          url: "https://cdn.report/rest/utip/signup", // Api url
+          translation: {
+              ru: {
+                  1: "Ведите последние 5 цифр номера с которого вам поступил звонок",
+                  2: "Код не верен",
+                  200: "Регистрация успешно пройдена",
+                  400: "Возникли проблемы с регистрацией пользователя. Возможные причины: ",
+                  403: "Не все обязательные поля были заполнены",
+                  500: "Временные неполадки сервера, извините. Попробуйте позже, мы уже проводим технические работы по исправлению данной проблемы!",
+                  423: "Мы заподозрили странную активность с вашего IP попробуйте через 5 секунд и удостоверьтесь что вы ввели правильные данные",
+              },
+              en: {
+                  1: "Put 5 last digits of number from we are calling right now",
+                  2: "Code is not right",
+                  200: "Registration was success",
+                  423: "We suspected strange activity from your IP try in 5 seconds and make sure you entered the correct data",
+                  403: "Validation was not passed",
+                  400: "There were problems with the user registration. Possible reasons:",
+                  500: "Temporary server problems, sorry. Later, we are already doing technical work to fix this problem!",
+              },
+          }, // Not required. Use if you want to change the translation
+          clear: ["email"], // Not required. Use if you want to clear some field after registration,
+          voice: 0, // 1 if you need verify the number of client, 0 vice versa. - Do not use it NOW just for request!
+      });
+  </script>
 
 </body>
 
